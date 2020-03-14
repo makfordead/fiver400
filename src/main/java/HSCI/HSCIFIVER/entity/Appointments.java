@@ -9,6 +9,5 @@ import java.util.Date;
 @Entity
 public class Appointments {
     private Date date;
-    private
 
 }
