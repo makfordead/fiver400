@@ -16,11 +16,6 @@ public class MedicalRecord {
     private String recordName;
 
 
-
-
-    @OneToMany
-    @JoinColumn
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     List<Treatment> treatments;
 
     @OneToOne

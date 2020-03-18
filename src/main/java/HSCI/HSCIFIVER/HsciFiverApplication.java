@@ -1,8 +1,10 @@
 package HSCI.HSCIFIVER;
 
 import HSCI.HSCIFIVER.constant.Roles;
+import HSCI.HSCIFIVER.entity.Physician;
 import HSCI.HSCIFIVER.entity.User;
 import HSCI.HSCIFIVER.filters.JwtRequestFilter;
+import HSCI.HSCIFIVER.repositories.PhysicianRepository;
 import HSCI.HSCIFIVER.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 public class HsciFiverApplication {
 	@Autowired
+	private PhysicianRepository physicianRepository;
+	@Autowired
 	private UserRepository userRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(HsciFiverApplication.class, args);
@@ -35,11 +39,12 @@ public class HsciFiverApplication {
 	}
 	@PostConstruct
 	private void init(){
-		User user = new User();
-		user.setUsername("admin");
-		user.setPassword("admin");
-		user.setRole(Roles.ADMIN);
-		userRepository.save(user);
+		physicianRepository.save(new Physician());
+//		User user = new User();
+//		user.setUsername("admin");
+//		user.setPassword("admin");
+//		user.setRole(Roles.ADMIN);
+//		userRepository.save(user);
 	}
 
 
@@ -86,5 +91,6 @@ public class HsciFiverApplication {
 			return new ModelMapper();
 		}
 	}
+
 
 }

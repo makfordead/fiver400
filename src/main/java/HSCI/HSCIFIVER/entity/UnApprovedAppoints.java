@@ -19,7 +19,6 @@ public class UnApprovedAppoints {
     @OneToOne
     private MedicalRecord medicalRecord;
 
-
     public UnApprovedAppoints() {
     }
 }

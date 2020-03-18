@@ -1,9 +1,11 @@
 package HSCI.HSCIFIVER.controller;
 
+import HSCI.HSCIFIVER.entity.User;
+import HSCI.HSCIFIVER.models.AuthenticationRequest;
+import HSCI.HSCIFIVER.models.AuthenticationResponse;
+import HSCI.HSCIFIVER.repositories.UserRepository;
 import HSCI.HSCIFIVER.service.MyUserDetailsService;
 import HSCI.HSCIFIVER.util.JwtUtil;
-import io.javabrains.springsecurityjwt.models.AuthenticationRequest;
-import io.javabrains.springsecurityjwt.models.AuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,7 +16,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("*")
 public class AuthenticationController {
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -40,8 +45,8 @@ public class AuthenticationController {
                 .loadUserByUsername(authenticationRequest.getUsername());
 
         final String jwt = jwtTokenUtil.generateToken(userDetails);
-
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        User user = userRepository.findUserByUsername(userDetails.getUsername());
+        return ResponseEntity.ok(new AuthenticationResponse(jwt,user.getRole().toString()));
     }
     @GetMapping("/test")
     @PreAuthorize("hasAnyRole('ADMIN','PATIENT')")

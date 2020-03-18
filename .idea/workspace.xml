@@ -2,8 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c3130cb-83d7-48db-8477-e776eb618bc5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/CreateMedicalAppointmentDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/CreateUpdateTreatmentDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/GetMedicalRecordDtoList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysicianDetailDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/SingleMedicalRecordDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/HsciFiverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/HsciFiverApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/PhysicianController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/PhysicianController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/GetAllPhysiciansDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/GetAllPhysiciansDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PatientInsuranceDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PatientInsuranceDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysicianUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysicianUpdateDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Appointments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Appointments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Insurance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Insurance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/MedicalRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/MedicalRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Treatment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Treatment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/UnApprovedAppoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/UnApprovedAppoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/filters/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/filters/JwtRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/models/AuthenticationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/models/AuthenticationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/models/AuthenticationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/models/AuthenticationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/repositories/MedicalRecordRespository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/repositories/MedicalRecordRespository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/repositories/PhysicianRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/repositories/PhysicianRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/service/MyUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/service/MyUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +63,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../tf/api/api/build.gradle" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -80,26 +105,38 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="526" y="116" width="548" height="590" key="#com.intellij.ide.util.MemberChooser" timestamp="1584213857074">
+    <state x="526" y="116" width="548" height="590" key="#com.intellij.ide.util.MemberChooser" timestamp="1584371560460">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="526" y="116" width="548" height="590" key="#com.intellij.ide.util.MemberChooser/70.27.1296.741@70.27.1296.741" timestamp="1584213857074" />
-    <state width="1250" height="172" key="GridCell.Tab.0.bottom" timestamp="1584213584678">
+    <state x="526" y="116" width="548" height="590" key="#com.intellij.ide.util.MemberChooser/70.27.1296.741@70.27.1296.741" timestamp="1584371560460" />
+    <state x="70" y="27" width="909" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1584544560475">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state width="1250" height="172" key="GridCell.Tab.0.bottom/70.27.1296.741@70.27.1296.741" timestamp="1584213584678" />
-    <state width="1250" height="172" key="GridCell.Tab.0.center" timestamp="1584213584678">
+    <state x="70" y="27" width="909" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/70.27.1296.741@70.27.1296.741" timestamp="1584544560475" />
+    <state x="501" y="155" width="424" height="491" key="FileChooserDialogImpl" timestamp="1584367745733">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state width="1250" height="172" key="GridCell.Tab.0.center/70.27.1296.741@70.27.1296.741" timestamp="1584213584678" />
-    <state width="1250" height="172" key="GridCell.Tab.0.left" timestamp="1584213584677">
+    <state x="501" y="155" width="424" height="491" key="FileChooserDialogImpl/70.27.1296.741@70.27.1296.741" timestamp="1584367745733" />
+    <state width="1250" height="172" key="GridCell.Tab.0.bottom" timestamp="1584554376408">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state width="1250" height="172" key="GridCell.Tab.0.left/70.27.1296.741@70.27.1296.741" timestamp="1584213584677" />
-    <state width="1250" height="172" key="GridCell.Tab.0.right" timestamp="1584213584678">
+    <state width="1250" height="172" key="GridCell.Tab.0.bottom/70.27.1296.741@70.27.1296.741" timestamp="1584554376408" />
+    <state width="1250" height="172" key="GridCell.Tab.0.center" timestamp="1584554376407">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state width="1250" height="172" key="GridCell.Tab.0.right/70.27.1296.741@70.27.1296.741" timestamp="1584213584678" />
+    <state width="1250" height="172" key="GridCell.Tab.0.center/70.27.1296.741@70.27.1296.741" timestamp="1584554376407" />
+    <state width="1250" height="172" key="GridCell.Tab.0.left" timestamp="1584554376407">
+      <screen x="70" y="27" width="1296" height="741" />
+    </state>
+    <state width="1250" height="172" key="GridCell.Tab.0.left/70.27.1296.741@70.27.1296.741" timestamp="1584554376407" />
+    <state width="1250" height="172" key="GridCell.Tab.0.right" timestamp="1584554376407">
+      <screen x="70" y="27" width="1296" height="741" />
+    </state>
+    <state width="1250" height="172" key="GridCell.Tab.0.right/70.27.1296.741@70.27.1296.741" timestamp="1584554376407" />
+    <state x="382" y="174" key="run.anything.popup" timestamp="1584473012464">
+      <screen x="70" y="27" width="1296" height="741" />
+    </state>
+    <state x="382" y="174" key="run.anything.popup/70.27.1296.741@70.27.1296.741" timestamp="1584473012464" />
     <state x="381" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1584211416296">
       <screen x="70" y="27" width="1296" height="741" />
     </state>

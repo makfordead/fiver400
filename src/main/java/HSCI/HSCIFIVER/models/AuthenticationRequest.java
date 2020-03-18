@@ -1,4 +1,4 @@
-package io.javabrains.springsecurityjwt.models;
+package HSCI.HSCIFIVER.models;
 
 import java.io.Serializable;
 

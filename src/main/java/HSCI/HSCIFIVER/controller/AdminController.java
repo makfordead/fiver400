@@ -24,6 +24,7 @@ public class AdminController {
     @Autowired
     private ModelMapper modelMapper;
     @PostMapping("/createPhysician")
+    //@PreAuthorize("hasAnyRole('ADMIN')")
     private ResponseEntity<?> createPhysician(@RequestBody PhysicianCreateDto physicianCreateDto) throws Exception{
         User user = modelMapper.map(physicianCreateDto,User.class);
         user.setRole(Roles.PHYSICIAN);
@@ -37,6 +38,6 @@ public class AdminController {
         Physician physician = new Physician();
         physician.setUser(user);
         physicianRepository.save(physician);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>("Sucess",HttpStatus.OK);
     }
 }

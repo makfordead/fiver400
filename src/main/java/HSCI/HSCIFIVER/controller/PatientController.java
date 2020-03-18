@@ -16,17 +16,23 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
 @RestController
+@CrossOrigin("*")
 public class PatientController {
     @Autowired
     private MedicalRecordRespository medicalRecordRespository;
+
     @Autowired
     private PhysicianRepository physicianRepository;
+
     @Autowired
     private PatientRepository patientRepository;
+
     @Autowired
     private ModelMapper modelMapper;
+
     @Autowired
     private UserRepository userRepository;
     @PostMapping("/register/patientregister")
@@ -49,7 +55,8 @@ public class PatientController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @PutMapping("/addpatientdetails")
-    @PreAuthorize("hasAnyRole('PATIENT')")
+    @CrossOrigin("*")
+    //@PreAuthorize("hasAnyRole('PATIENT')")
     public ResponseEntity<?> addPatientDetails(
             Principal principal,
             @RequestBody PatientDetailsDto patientDetailsDto) throws Exception{
@@ -68,7 +75,7 @@ public class PatientController {
     }
 
     @PutMapping("/addpatientinsurancedetails")
-    @PreAuthorize("hasAnyRole('PATIENT')")
+    //@PreAuthorize("hasAnyRole('PATIENT')")
     public ResponseEntity<?> addInsuranceDetails(Principal principal, @RequestBody PatientInsuranceDto patientInsuranceDto){
         User user = userRepository.findUserByUsername(principal.getName());
 
@@ -96,20 +103,20 @@ public class PatientController {
         PatientInsuranceDto patientInsuranceDto = modelMapper.map(insurance,PatientInsuranceDto.class);
         return new ResponseEntity<>(patientInsuranceDto,HttpStatus.OK);
     }
-    @GetMapping("getallphysicians")
+    @GetMapping("/getallphysicians")
     public ResponseEntity<?> getallphysicians(Principal principal){
         List<Physician> physicians = physicianRepository.findAll();
         GetAllPhysiciansDto getAllPhysiciansDto = new GetAllPhysiciansDto();
-        getAllPhysiciansDto.setPhysicians(physicians);
+        getAllPhysiciansDto.createPhysicianListDto(physicians);
         return new ResponseEntity<>(getAllPhysiciansDto,HttpStatus.OK);
     }
     @PostMapping("/createamedicalappointment")
     public ResponseEntity<?> createMedicalAppointment(
             Principal principal
-            ,@RequestParam("physicianId") Long physicianId)
+            ,@RequestBody(required = true) Map<String,String> map)
                                                                 throws Exception {
         Patient patient = patientRepository.getPatientByusername(principal.getName());
-        Physician physician = physicianRepository.findById(physicianId).get();
+        Physician physician = physicianRepository.findById(Long.parseLong(map.get("physicianId"))).get();
         if(physician==null)
             throw new Exception("Physician not found");
         MedicalRecord medicalRecord = new MedicalRecord();
@@ -119,5 +126,26 @@ public class PatientController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @GetMapping("/getmedicalrecords")
+    public ResponseEntity<?> getMedicalAppointment(Principal principal){
 
+        List<MedicalRecord> medicalRecordsList = medicalRecordRespository.getmedicalrecordfromuserUsername(principal.getName());
+        GetMedicalRecordDtoList getMedicalRecordDto = new GetMedicalRecordDtoList();
+        getMedicalRecordDto.makeMedicalRedorcDtoList(medicalRecordsList);
+        return new ResponseEntity<>(getMedicalRecordDto,HttpStatus.OK);
+    }
+    @GetMapping("/getPhysicianDetail")
+    public ResponseEntity<?> getPhysicianDetail(@RequestParam Long physicianId){
+        Physician physician = physicianRepository.getOne(physicianId);
+        PhysicianDetailDto physicianDetailDto = modelMapper.map(physician,PhysicianDetailDto.class);
+        return new ResponseEntity<>(physicianDetailDto,HttpStatus.OK);
+
+    }
+    @GetMapping("/getamedicalrecord")
+    public ResponseEntity<?> getMedicalRecord(@RequestParam Long medicalRecordId) {
+        MedicalRecord medicalRecord = medicalRecordRespository.getOne(medicalRecordId);
+        SingleMedicalRecordDto singleMedicalRecordDto = modelMapper.map(medicalRecord,SingleMedicalRecordDto.class);
+        return new ResponseEntity<>(singleMedicalRecordDto,HttpStatus.OK);
+
+    }
 }

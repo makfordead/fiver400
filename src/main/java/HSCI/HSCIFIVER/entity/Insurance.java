@@ -15,6 +15,6 @@ public class Insurance {
     private String name;
 
     @Column
-    private String insuranceId;
+    private String insuranceid;
 
 }
