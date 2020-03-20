@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 public class SingleMedicalRecordDto {
     private String recordName;
-    List<Treatment> treatments;
+    Treatment treatment;
     private Physician physician;
     private Patient patient;
     private List<Appointments> appointments;

@@ -3,10 +3,7 @@ package HSCI.HSCIFIVER.controller;
 import HSCI.HSCIFIVER.dto.CreateUpdateTreatmentDto;
 import HSCI.HSCIFIVER.dto.PhysicianGetResponseDto;
 import HSCI.HSCIFIVER.dto.PhysicianUpdateDto;
-import HSCI.HSCIFIVER.entity.MedicalRecord;
-import HSCI.HSCIFIVER.entity.Physician;
-import HSCI.HSCIFIVER.entity.Treatment;
-import HSCI.HSCIFIVER.entity.User;
+import HSCI.HSCIFIVER.entity.*;
 import HSCI.HSCIFIVER.repositories.MedicalRecordRespository;
 import HSCI.HSCIFIVER.repositories.PhysicianRepository;
 import HSCI.HSCIFIVER.repositories.UserRepository;
@@ -18,6 +15,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class PhysicianController {
@@ -58,9 +57,20 @@ public class PhysicianController {
         if(medicalRecord == null){
             throw new Exception("Medical Record Not Found");
         }
-        medicalRecord.getTreatments().add(treatment);
+        medicalRecord.setTreatment(treatment);
         medicalRecord = medicalRecordRespository.save(medicalRecord);
         return new ResponseEntity<>(HttpStatus.OK);
+
+    }
+    @GetMapping("/getPatients")
+    public ResponseEntity<?> getAllPatients(Principal principal){
+
+        List<MedicalRecord> medicalRecordList = medicalRecordRespository.getMedicalRecords(principal.getName());
+        List<Patient> patientList = new ArrayList<>();
+        for (MedicalRecord medicalRecord: medicalRecordList) {
+            patientList.add(medicalRecord.getPatient());
+        }
+        return new ResponseEntity<>(patientList,HttpStatus.OK);
 
     }
 
@@ -69,6 +79,10 @@ public class PhysicianController {
                                                      createUpdateTreatmentDto){
         return null;
         
+    }
+    @GetMapping("/getpatientDetails")
+    public ResponseEntity<?> getPatientMedicalRecords(@RequestParam Long patientid){
+        return new ResponseEntity<>(medicalRecordRespository.getMedicalRecordsfromPatientId(patientid),HttpStatus.OK);
     }
 
 }

@@ -15,8 +15,8 @@ public class MedicalRecord {
 
     private String recordName;
 
-
-    List<Treatment> treatments;
+    @OneToOne
+    private Treatment treatment;
 
     @OneToOne
     private Physician physician;

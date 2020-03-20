@@ -1,5 +1,6 @@
 package HSCI.HSCIFIVER.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Cascade;
 
@@ -20,9 +21,10 @@ public class Physician {
 
     private String address;
 
-    private Long phoneNumber;
+    private Long phonenumber;
 
     @OneToOne
+    @JsonIgnore
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private User user;
 }
