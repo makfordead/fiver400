@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c3130cb-83d7-48db-8477-e776eb618bc5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/AdminGetAllPatientDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/repositories/TreatmentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/HsciFiverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/HsciFiverApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/PatientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/PhysicianController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/controller/PhysicianController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysicianDetailDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysicianDetailDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysicianGetResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysicianGetResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysicianUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysicianUpdateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/SingleMedicalRecordDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/SingleMedicalRecordDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysiciansMedicalRecordGetDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/dto/PhysiciansMedicalRecordGetListDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/MedicalRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/MedicalRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Physician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Physician.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Treatment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/entity/Treatment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/repositories/MedicalRecordRespository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HSCI/HSCIFIVER/repositories/MedicalRecordRespository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,37 +93,45 @@
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="526" y="116" width="548" height="590" key="#com.intellij.ide.util.MemberChooser/70.27.1296.741@70.27.1296.741" timestamp="1584371560460" />
-    <state x="70" y="27" width="909" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1584544560475">
+    <state x="70" y="27" width="909" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1584887518217">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="70" y="27" width="909" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/70.27.1296.741@70.27.1296.741" timestamp="1584544560475" />
+    <state x="70" y="27" width="909" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/70.27.1296.741@70.27.1296.741" timestamp="1584887518217" />
     <state x="501" y="155" width="424" height="491" key="FileChooserDialogImpl" timestamp="1584367745733">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="501" y="155" width="424" height="491" key="FileChooserDialogImpl/70.27.1296.741@70.27.1296.741" timestamp="1584367745733" />
-    <state width="1250" height="172" key="GridCell.Tab.0.bottom" timestamp="1584713846802">
+    <state width="1250" height="172" key="GridCell.Tab.0.bottom" timestamp="1584888392656">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state width="1250" height="172" key="GridCell.Tab.0.bottom/70.27.1296.741@70.27.1296.741" timestamp="1584713846802" />
-    <state width="1250" height="172" key="GridCell.Tab.0.center" timestamp="1584713846801">
+    <state width="1250" height="172" key="GridCell.Tab.0.bottom/70.27.1296.741@70.27.1296.741" timestamp="1584888392656" />
+    <state width="1250" height="172" key="GridCell.Tab.0.center" timestamp="1584888392655">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state width="1250" height="172" key="GridCell.Tab.0.center/70.27.1296.741@70.27.1296.741" timestamp="1584713846801" />
-    <state width="1250" height="172" key="GridCell.Tab.0.left" timestamp="1584713846801">
+    <state width="1250" height="172" key="GridCell.Tab.0.center/70.27.1296.741@70.27.1296.741" timestamp="1584888392655" />
+    <state width="1250" height="172" key="GridCell.Tab.0.left" timestamp="1584888392655">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state width="1250" height="172" key="GridCell.Tab.0.left/70.27.1296.741@70.27.1296.741" timestamp="1584713846801" />
-    <state width="1250" height="172" key="GridCell.Tab.0.right" timestamp="1584713846801">
+    <state width="1250" height="172" key="GridCell.Tab.0.left/70.27.1296.741@70.27.1296.741" timestamp="1584888392655" />
+    <state width="1250" height="172" key="GridCell.Tab.0.right" timestamp="1584888392656">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state width="1250" height="172" key="GridCell.Tab.0.right/70.27.1296.741@70.27.1296.741" timestamp="1584713846801" />
+    <state width="1250" height="172" key="GridCell.Tab.0.right/70.27.1296.741@70.27.1296.741" timestamp="1584888392656" />
+    <state x="382" y="27" width="662" height="741" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1584888707379">
+      <screen x="70" y="27" width="1296" height="741" />
+    </state>
+    <state x="382" y="27" width="662" height="741" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/70.27.1296.741@70.27.1296.741" timestamp="1584888707379" />
+    <state x="70" y="124" width="1286" height="554" key="new project wizard" timestamp="1584850031324">
+      <screen x="70" y="27" width="1296" height="741" />
+    </state>
+    <state x="70" y="124" width="1286" height="554" key="new project wizard/70.27.1296.741@70.27.1296.741" timestamp="1584850031324" />
     <state x="382" y="174" key="run.anything.popup" timestamp="1584473012464">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
     <state x="382" y="174" key="run.anything.popup/70.27.1296.741@70.27.1296.741" timestamp="1584473012464" />
-    <state x="381" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1584211416296">
+    <state x="381" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1584732189351">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
-    <state x="381" y="89" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1584211416296" />
+    <state x="381" y="89" width="672" height="678" key="search.everywhere.popup/70.27.1296.741@70.27.1296.741" timestamp="1584732189351" />
   </component>
 </project>

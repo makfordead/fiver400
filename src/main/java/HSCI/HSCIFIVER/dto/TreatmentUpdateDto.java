@@ -1,32 +1,22 @@
-package HSCI.HSCIFIVER.entity;
+package HSCI.HSCIFIVER.dto;
 
 import HSCI.HSCIFIVER.constant.Status;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
+
 @Data
-@Entity
-public class Treatment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+@NoArgsConstructor
+@AllArgsConstructor
+public class TreatmentUpdateDto {
     private Date treatmentDate;
-
     private String locationOfTreatment;
-
     private String anamneses;
-
     private String medicalFindings;
-
     private String medicalLetter;
-
     private String diagnoses;
-
     private String medications;
 
 }

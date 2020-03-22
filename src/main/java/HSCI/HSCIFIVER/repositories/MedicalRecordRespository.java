@@ -16,4 +16,8 @@ public interface MedicalRecordRespository extends JpaRepository<MedicalRecord,Lo
 
     @Query("SELECT u FROM MedicalRecord u where u.patient.id = :id")
     public List<MedicalRecord> getMedicalRecordsfromPatientId(@Param("id") Long id);
+
+    @Query("SELECT u FROM MedicalRecord u where u.physician.id = :id")
+    public List<MedicalRecord> getMedicalRecordsByPhysicianId(@Param("id") Long id);
+
 }

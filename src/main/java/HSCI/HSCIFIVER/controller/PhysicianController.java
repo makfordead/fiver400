@@ -1,11 +1,11 @@
 package HSCI.HSCIFIVER.controller;
 
-import HSCI.HSCIFIVER.dto.CreateUpdateTreatmentDto;
-import HSCI.HSCIFIVER.dto.PhysicianGetResponseDto;
-import HSCI.HSCIFIVER.dto.PhysicianUpdateDto;
+import HSCI.HSCIFIVER.constant.Status;
+import HSCI.HSCIFIVER.dto.*;
 import HSCI.HSCIFIVER.entity.*;
 import HSCI.HSCIFIVER.repositories.MedicalRecordRespository;
 import HSCI.HSCIFIVER.repositories.PhysicianRepository;
+import HSCI.HSCIFIVER.repositories.TreatmentRepository;
 import HSCI.HSCIFIVER.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +17,13 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 public class PhysicianController {
+    @Autowired
+    private TreatmentRepository treatmentRepository;
     @Autowired
     private PhysicianRepository physicianRepository;
 
@@ -66,11 +70,14 @@ public class PhysicianController {
     public ResponseEntity<?> getAllPatients(Principal principal){
 
         List<MedicalRecord> medicalRecordList = medicalRecordRespository.getMedicalRecords(principal.getName());
-        List<Patient> patientList = new ArrayList<>();
-        for (MedicalRecord medicalRecord: medicalRecordList) {
-            patientList.add(medicalRecord.getPatient());
+        PhysiciansMedicalRecordGetListDto  physiciansMedicalRecordGetListDto = new PhysiciansMedicalRecordGetListDto();
+        for (MedicalRecord record:medicalRecordList
+             ) {
+            if (record.getStatus().toString().equals(Status.DISMISS.toString()))
+                continue;
+            physiciansMedicalRecordGetListDto.addToList(record);
         }
-        return new ResponseEntity<>(patientList,HttpStatus.OK);
+        return new ResponseEntity<>(physiciansMedicalRecordGetListDto,HttpStatus.OK);
 
     }
 
@@ -83,6 +90,42 @@ public class PhysicianController {
     @GetMapping("/getpatientDetails")
     public ResponseEntity<?> getPatientMedicalRecords(@RequestParam Long patientid){
         return new ResponseEntity<>(medicalRecordRespository.getMedicalRecordsfromPatientId(patientid),HttpStatus.OK);
+    }
+    @GetMapping("/getmedicalrecordbyid")
+    public ResponseEntity<?> getMedicalRecordById(@RequestParam Long medicalid) throws Exception{
+        MedicalRecord medicalRecord=medicalRecordRespository.getOne(medicalid);
+        if(Objects.isNull(medicalRecord))
+            throw new Exception("No medical record found");
+        return new ResponseEntity<>(medicalRecord,HttpStatus.OK);
+    }
+    @PutMapping("/updatemedicalrecord")
+    public ResponseEntity<?> updateMedicalRecord(@RequestParam MedicalRecord medicalRecord)
+    throws Exception{
+        if(Objects.isNull(medicalRecord.getId()))
+            throw new Exception("The id is not valid");
+
+        medicalRecordRespository.save(medicalRecord);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PutMapping("/updatetreatment")
+    public ResponseEntity<?> updateTreatment(@RequestParam Long recordId,@RequestBody TreatmentUpdateDto treatmentUpdateDto)
+    throws Exception{
+        Treatment treatment = modelMapper.map(treatmentUpdateDto,Treatment.class);
+        Optional<MedicalRecord> medicalRecord = medicalRecordRespository.findById(recordId);
+        if(!medicalRecord.isPresent())
+            throw new Exception("Medical record not found");
+        treatment.setId(medicalRecord.get().getTreatment().getId());
+        treatment = treatmentRepository.save(treatment);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PostMapping("dismissPatient")
+    public ResponseEntity<?> dismissPatient(@RequestParam Long recordid) throws Exception{
+        Optional<MedicalRecord> medicalRecord = medicalRecordRespository.findById(recordid);
+        if(!medicalRecord.isPresent())
+            throw new Exception("Medical record not found");
+        medicalRecord.get().setStatus(Status.DISMISS);
+        medicalRecordRespository.save(medicalRecord.get());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

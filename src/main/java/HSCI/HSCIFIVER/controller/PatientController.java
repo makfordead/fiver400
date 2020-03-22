@@ -1,12 +1,10 @@
 package HSCI.HSCIFIVER.controller;
 
 import HSCI.HSCIFIVER.constant.Roles;
+import HSCI.HSCIFIVER.constant.Status;
 import HSCI.HSCIFIVER.dto.*;
 import HSCI.HSCIFIVER.entity.*;
-import HSCI.HSCIFIVER.repositories.MedicalRecordRespository;
-import HSCI.HSCIFIVER.repositories.PatientRepository;
-import HSCI.HSCIFIVER.repositories.PhysicianRepository;
-import HSCI.HSCIFIVER.repositories.UserRepository;
+import HSCI.HSCIFIVER.repositories.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +19,8 @@ import java.util.Map;
 @RestController
 @CrossOrigin("*")
 public class PatientController {
+    @Autowired
+    private TreatmentRepository treatmentRepository;
     @Autowired
     private MedicalRecordRespository medicalRecordRespository;
 
@@ -122,6 +122,10 @@ public class PatientController {
         MedicalRecord medicalRecord = new MedicalRecord();
         medicalRecord.setPhysician(physician);
         medicalRecord.setPatient(patient);
+        medicalRecord.setStatus(Status.ACTIVE);
+        Treatment treatment = new Treatment();
+        treatment = treatmentRepository.save(treatment);
+        medicalRecord.setTreatment(treatment);
         medicalRecord = medicalRecordRespository.save(medicalRecord);
 
         return new ResponseEntity<>(HttpStatus.OK);
@@ -143,6 +147,7 @@ public class PatientController {
     }
     @GetMapping("/getamedicalrecord")
     public ResponseEntity<?> getMedicalRecord(@RequestParam Long medicalRecordId) {
+
         MedicalRecord medicalRecord = medicalRecordRespository.getOne(medicalRecordId);
         SingleMedicalRecordDto singleMedicalRecordDto = modelMapper.map(medicalRecord,SingleMedicalRecordDto.class);
         return new ResponseEntity<>(singleMedicalRecordDto,HttpStatus.OK);

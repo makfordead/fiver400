@@ -39,7 +39,7 @@ public class HsciFiverApplication {
 	}
 	@PostConstruct
 	private void init(){
-		physicianRepository.save(new Physician());
+	//	physicianRepository.save(new Physician());
 //		User user = new User();
 //		user.setUsername("admin");
 //		user.setPassword("admin");
