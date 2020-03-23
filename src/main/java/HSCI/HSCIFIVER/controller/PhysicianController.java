@@ -34,6 +34,7 @@ public class PhysicianController {
     @Autowired
     private ModelMapper modelMapper;
     @PutMapping("/updatephysician")
+    @PreAuthorize("hasRole('PHYSICIAN')")
     public ResponseEntity<?> updatePhysicianDetail(Principal principal, @RequestBody PhysicianUpdateDto physicianUpdateDto){
         User user = userRepository.findUserByUsername(principal.getName());
         Physician physician = physicianRepository.getphysicianbyusername(principal.getName());
@@ -44,6 +45,8 @@ public class PhysicianController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping("/getphysiciandetail")
+    @PreAuthorize("hasRole('PHYSICIAN')")
+
     public ResponseEntity<?> getPhysicianDetail(Principal principal){
         Physician physician = physicianRepository.getphysicianbyusername(principal.getName());
         PhysicianGetResponseDto physicianGetResponseDto = modelMapper.map(physician,PhysicianGetResponseDto.class);
@@ -67,6 +70,8 @@ public class PhysicianController {
 
     }
     @GetMapping("/getPatients")
+    @PreAuthorize("hasRole('PHYSICIAN')")
+
     public ResponseEntity<?> getAllPatients(Principal principal){
 
         List<MedicalRecord> medicalRecordList = medicalRecordRespository.getMedicalRecords(principal.getName());
@@ -82,16 +87,22 @@ public class PhysicianController {
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('PHYSICIAN')")
+
     public ResponseEntity<?> updatePatientTreantment(Principal principal, @RequestBody CreateUpdateTreatmentDto
                                                      createUpdateTreatmentDto){
         return null;
         
     }
     @GetMapping("/getpatientDetails")
+    @PreAuthorize("hasRole('PHYSICIAN')")
+
     public ResponseEntity<?> getPatientMedicalRecords(@RequestParam Long patientid){
         return new ResponseEntity<>(medicalRecordRespository.getMedicalRecordsfromPatientId(patientid),HttpStatus.OK);
     }
     @GetMapping("/getmedicalrecordbyid")
+    @PreAuthorize("hasRole('PHYSICIAN')")
+
     public ResponseEntity<?> getMedicalRecordById(@RequestParam Long medicalid) throws Exception{
         MedicalRecord medicalRecord=medicalRecordRespository.getOne(medicalid);
         if(Objects.isNull(medicalRecord))
@@ -99,6 +110,7 @@ public class PhysicianController {
         return new ResponseEntity<>(medicalRecord,HttpStatus.OK);
     }
     @PutMapping("/updatemedicalrecord")
+    @PreAuthorize("hasRole('PHYSICIAN')")
     public ResponseEntity<?> updateMedicalRecord(@RequestParam MedicalRecord medicalRecord)
     throws Exception{
         if(Objects.isNull(medicalRecord.getId()))
@@ -108,6 +120,8 @@ public class PhysicianController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @PutMapping("/updatetreatment")
+    @PreAuthorize("hasRole('PHYSICIAN')")
+
     public ResponseEntity<?> updateTreatment(@RequestParam Long recordId,@RequestBody TreatmentUpdateDto treatmentUpdateDto)
     throws Exception{
         Treatment treatment = modelMapper.map(treatmentUpdateDto,Treatment.class);
@@ -119,6 +133,8 @@ public class PhysicianController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @PostMapping("dismissPatient")
+    @PreAuthorize("hasRole('PHYSICIAN')")
+
     public ResponseEntity<?> dismissPatient(@RequestParam Long recordid) throws Exception{
         Optional<MedicalRecord> medicalRecord = medicalRecordRespository.findById(recordid);
         if(!medicalRecord.isPresent())

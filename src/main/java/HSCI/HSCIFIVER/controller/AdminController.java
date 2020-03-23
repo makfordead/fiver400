@@ -15,8 +15,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,9 +36,10 @@ public class AdminController {
 
     @Autowired
     private ModelMapper modelMapper;
+
     @PostMapping("/createPhysician")
-    //@PreAuthorize("hasAnyRole('ADMIN')")
-    private ResponseEntity<?> createPhysician(@RequestBody PhysicianCreateDto physicianCreateDto) throws Exception{
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> createPhysician(@RequestBody PhysicianCreateDto physicianCreateDto) throws Exception{
         User user = modelMapper.map(physicianCreateDto,User.class);
         user.setRole(Roles.PHYSICIAN);
         try {
@@ -52,6 +55,8 @@ public class AdminController {
         return new ResponseEntity<>("Sucess",HttpStatus.OK);
     }
     @PostMapping("/deletePhysician/")
+    @PreAuthorize("hasRole('ADMIN')")
+
     public ResponseEntity<?> deletePhysician(@RequestParam Long physicianId) throws Exception{
         Physician physician = physicianRepository.getOne(physicianId);
         if(Objects.isNull(physician))
@@ -63,6 +68,8 @@ public class AdminController {
     }
 
     @GetMapping("/admin/getallpatients")
+    @PreAuthorize("hasRole('ADMIN')")
+
     public ResponseEntity<?> getAllPatients(){
         AdminGetAllPatientDto adminGetAllPatientDto = new AdminGetAllPatientDto();
         List<Patient> patients = patientRepository.findAll();
@@ -73,6 +80,7 @@ public class AdminController {
         return new ResponseEntity<>(adminGetAllPatientDto,HttpStatus.OK);
     }
     @PostMapping("/admin/deletePatient/")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deletePatient(@RequestParam Long patientId) throws Exception{
         Patient patient = patientRepository.getOne(patientId);
         if(Objects.isNull(patient))

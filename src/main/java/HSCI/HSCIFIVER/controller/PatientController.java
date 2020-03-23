@@ -36,6 +36,7 @@ public class PatientController {
     @Autowired
     private UserRepository userRepository;
     @PostMapping("/register/patientregister")
+
     public ResponseEntity<?> registerPatient(@RequestBody PatientRegisterDTO patientRegisterDTO)
     throws Exception {
         User temp = userRepository.findUserByUsername(patientRegisterDTO.getUsername());
@@ -56,6 +57,8 @@ public class PatientController {
     }
     @PutMapping("/addpatientdetails")
     @CrossOrigin("*")
+    @PreAuthorize("hasRole('PATIENT')")
+
     //@PreAuthorize("hasAnyRole('PATIENT')")
     public ResponseEntity<?> addPatientDetails(
             Principal principal,
@@ -70,12 +73,13 @@ public class PatientController {
         newPatient.setId(patient.getId());
         newPatient.setUser(patient.getUser());
         newPatient.setInsurance(patient.getInsurance());
+
         patientRepository.save(newPatient);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/addpatientinsurancedetails")
-    //@PreAuthorize("hasAnyRole('PATIENT')")
+    @PreAuthorize("hasRole('PATIENT')")
     public ResponseEntity<?> addInsuranceDetails(Principal principal, @RequestBody PatientInsuranceDto patientInsuranceDto){
         User user = userRepository.findUserByUsername(principal.getName());
 
@@ -104,6 +108,8 @@ public class PatientController {
         return new ResponseEntity<>(patientInsuranceDto,HttpStatus.OK);
     }
     @GetMapping("/getallphysicians")
+    @PreAuthorize("hasRole('PATIENT')")
+
     public ResponseEntity<?> getallphysicians(Principal principal){
         List<Physician> physicians = physicianRepository.findAll();
         GetAllPhysiciansDto getAllPhysiciansDto = new GetAllPhysiciansDto();
@@ -111,6 +117,8 @@ public class PatientController {
         return new ResponseEntity<>(getAllPhysiciansDto,HttpStatus.OK);
     }
     @PostMapping("/createamedicalappointment")
+    @PreAuthorize("hasRole('PATIENT')")
+
     public ResponseEntity<?> createMedicalAppointment(
             Principal principal
             ,@RequestBody(required = true) Map<String,String> map)
@@ -131,6 +139,8 @@ public class PatientController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping("/getmedicalrecords")
+    @PreAuthorize("hasRole('PATIENT')")
+
     public ResponseEntity<?> getMedicalAppointment(Principal principal){
 
         List<MedicalRecord> medicalRecordsList = medicalRecordRespository.getmedicalrecordfromuserUsername(principal.getName());
@@ -139,6 +149,8 @@ public class PatientController {
         return new ResponseEntity<>(getMedicalRecordDto,HttpStatus.OK);
     }
     @GetMapping("/getPhysicianDetail")
+    @PreAuthorize("hasRole('PATIENT')")
+
     public ResponseEntity<?> getPhysicianDetail(@RequestParam Long physicianId){
         Physician physician = physicianRepository.getOne(physicianId);
         PhysicianDetailDto physicianDetailDto = modelMapper.map(physician,PhysicianDetailDto.class);
@@ -146,6 +158,8 @@ public class PatientController {
 
     }
     @GetMapping("/getamedicalrecord")
+    @PreAuthorize("hasRole('PATIENT')")
+
     public ResponseEntity<?> getMedicalRecord(@RequestParam Long medicalRecordId) {
 
         MedicalRecord medicalRecord = medicalRecordRespository.getOne(medicalRecordId);

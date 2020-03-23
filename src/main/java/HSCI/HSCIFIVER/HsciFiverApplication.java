@@ -25,6 +25,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.PostConstruct;
+import java.util.Optional;
 
 @SpringBootApplication
 public class HsciFiverApplication {
@@ -39,12 +40,14 @@ public class HsciFiverApplication {
 	}
 	@PostConstruct
 	private void init(){
-	//	physicianRepository.save(new Physician());
-//		User user = new User();
-//		user.setUsername("admin");
-//		user.setPassword("admin");
-//		user.setRole(Roles.ADMIN);
-//		userRepository.save(user);
+		Optional<User> adminCheck = userRepository.findById((long)1);
+		if(!adminCheck.isPresent()) {
+			User user = new User();
+			user.setUsername("admin");
+			user.setPassword("admin");
+			user.setRole(Roles.ADMIN);
+			userRepository.save(user);
+		}
 	}
 
 
