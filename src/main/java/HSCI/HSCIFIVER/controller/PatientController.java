@@ -158,7 +158,7 @@ public class PatientController {
 
     }
     @GetMapping("/getamedicalrecord")
-    @PreAuthorize("hasRole('PATIENT')")
+    @PreAuthorize("hasAnyRole('PATIENT','PHYSICIAN')")
 
     public ResponseEntity<?> getMedicalRecord(@RequestParam Long medicalRecordId) {
 
